@@ -7,6 +7,10 @@ import {loadBackgroundSprites} from './sprites.js';
 import {createBackgroundLayer, createSpriteLayer} from './layers.js';
 import Keyboard from './KeyboardState.js';
 
+window.addEventListener('keydown', event => {
+    console.log(event);
+});
+
 const canvas = document.getElementById('screen');
 const context = canvas.getContext('2d');
 
@@ -23,7 +27,6 @@ Promise.all([
     
     const gravity = 2000;
     mario.pos.set(64,180);
-    mario.vel.set(200,-600);
     
     const SPACE = 32;
     const input = new Keyboard();
