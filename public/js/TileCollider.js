@@ -1,15 +1,14 @@
-class TileResolver {
-    constructor(matrix, tileSize = 16) {
-        this.matrix = matrix;
-    }
-}
+import TileResolver from './TileResolver.js';
 
 export default class tileCollider {
-    constructor(tiles) {
-        this.tiles = tiles;
+    constructor(tileMatrix) {
+        this.tiles = new TileResolver(tileMatrix);
     }
     
     test(entity) {
-        
+//        const match = this.tiles.matchByPosition(entity.pos.x, entity.pos.y);
+//        if(match) {
+//            console.log("Matched tile", match, match.tile);
+//        }
     }
 }
