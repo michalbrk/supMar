@@ -2,7 +2,7 @@ export class Matrix {
     constructor() {
         this.grid = [];
     }
-    
+
     forEach(callback) {
         this.grid.forEach((column, x) => {
             column.forEach((value, y) => {
@@ -10,30 +10,30 @@ export class Matrix {
             });
         });
     }
-    
-    set(x,y, value) {
-        if(!this.grid[x]) {
+
+    get(x, y) {
+        const col = this.grid[x];
+        if (col) {
+            return col[y];
+        }
+        return undefined;
+    }
+
+    set(x, y, value) {
+        if (!this.grid[x]) {
             this.grid[x] = [];
         }
-        
+
         this.grid[x][y] = value;
     }
 }
 
 export class Vec2 {
-    constructor(x,y) {
-        this.set(x,y);
+    constructor(x, y) {
+        this.set(x, y);
     }
-    
-    get(x,y) {
-        const col = this.grid[x];
-        if(col) {
-            return col[y];
-        }
-        return undefined;
-    }
-    
-    set(x,y) {
+
+    set(x, y) {
         this.x = x;
         this.y = y;
     }

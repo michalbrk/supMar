@@ -6,20 +6,21 @@ export default class Timer {
         this.updateProxy = (time) => {
             accumulatedTime += (time - lastTime) / 1000;
 
-            while(accumulatedTime > deltaTime) {
+            while (accumulatedTime > deltaTime) {
                 this.update(deltaTime);
                 accumulatedTime -= deltaTime;
             }
+
             lastTime = time;
-            
+
             this.enqueue();
         }
     }
-    
+
     enqueue() {
         requestAnimationFrame(this.updateProxy);
     }
-    
+
     start() {
         this.enqueue();
     }
