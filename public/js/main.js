@@ -1,3 +1,4 @@
+import Camera from './Camera.js';
 import Timer from './Timer.js';
 import {loadLevel} from './loaders.js';
 import {createMario} from './entities.js';
@@ -12,6 +13,9 @@ Promise.all([
     loadLevel('1-1'),
 ])
 .then(([mario, level]) => {
+    const camera = new Camera();
+    window.camera = camera;
+    
     mario.pos.set(64, 64);
 
     level.comp.layers.push(createCollisionLayer(level));
@@ -35,7 +39,7 @@ Promise.all([
     timer.update = function update(deltaTime) {
         level.update(deltaTime);
 
-        level.comp.draw(context);
+        level.comp.draw(context, camera);
     }
 
     timer.start();
