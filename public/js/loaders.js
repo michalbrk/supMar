@@ -25,6 +25,7 @@ function createTiles(level, backgrounds) {
             for (let y = yStart; y < yEnd; ++y) {
                 level.tiles.set(x, y, {
                     name: background.tile,
+                    type: background.type
                 });
             }
         }
@@ -75,7 +76,7 @@ export function loadLevel(name) {
     return loadJSON(`/levels/${name}.json`)
     .then(levelSpec => Promise.all([
         levelSpec,
-        loadSpriteSheet(levelSpec.spriteSheet)
+        loadSpriteSheet(levelSpec.spriteSheet),
     ]))
     .then(([levelSpec, backgroundSprites]) => {
         const level = new Level();

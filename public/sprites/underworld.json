@@ -9,7 +9,19 @@
         },
         {
             "name": "sky",
-            "index": [13, 3]
+            "index": [3, 23]
+        },
+        {
+            "name": "chocolate",
+            "index": [0,1]
+        },
+        {
+            "name": "bricks",
+            "index": [1,0]
+        },
+        {
+            "name": "chance",
+            "index": [24,0]
         }
     ]
 }
