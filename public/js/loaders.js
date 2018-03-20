@@ -18,6 +18,7 @@ function loadJSON(url) {
 }
 
 function createTiles(level, backgrounds) {
+
     function applyRange(background, xStart, xLen, yStart, yLen) {
         const xEnd = xStart + xLen;
         const yEnd = yStart + yLen;
@@ -25,21 +26,23 @@ function createTiles(level, backgrounds) {
             for (let y = yStart; y < yEnd; ++y) {
                 level.tiles.set(x, y, {
                     name: background.tile,
-                    type: background.type
+                    type: background.type,
                 });
             }
         }
     }
-    
+
     backgrounds.forEach(background => {
         background.ranges.forEach(range => {
-            if(range.length === 4) {
+            if (range.length === 4) {
                 const [xStart, xLen, yStart, yLen] = range;
                 applyRange(background, xStart, xLen, yStart, yLen);
-            } else if(range.length === 3) {
+
+            } else if (range.length === 3) {
                 const [xStart, xLen, yStart] = range;
                 applyRange(background, xStart, xLen, yStart, 1);
-            } else if(range.length === 2) {
+
+            } else if (range.length === 2) {
                 const [xStart, yStart] = range;
                 applyRange(background, xStart, 1, yStart, 1);
             }
@@ -50,24 +53,22 @@ function createTiles(level, backgrounds) {
 function loadSpriteSheet(name) {
     return loadJSON(`/sprites/${name}.json`)
     .then(sheetSpec => Promise.all([
-            sheetSpec,
-            loadImage(sheetSpec.imageURL)
-        ])
-    )
+        sheetSpec,
+        loadImage(sheetSpec.imageURL),
+    ]))
     .then(([sheetSpec, image]) => {
         const sprites = new SpriteSheet(
-            image, 
-            sheetSpec.tileW, 
+            image,
+            sheetSpec.tileW,
             sheetSpec.tileH);
-        
+
         sheetSpec.tiles.forEach(tileSpec => {
             sprites.defineTile(
                 tileSpec.name,
                 tileSpec.index[0],
-                tileSpec.index[1])
-            
+                tileSpec.index[1]);
         });
-        
+
         return sprites;
     });
 }
