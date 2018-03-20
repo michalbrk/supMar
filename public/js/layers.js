@@ -8,7 +8,15 @@ export function createBackgroundLayer(level, sprites) {
 
     const context = buffer.getContext('2d');
     
-    function redraw(startIndex, endIndex) {
+    let startIndex, endIndex;
+    function redraw(drawFrom, drawTo) {
+        if(drawFrom === startIndex && drawTo === endIndex) {
+            return;
+        }
+        
+        startIndex = drawFrom;
+        endIndex = drawTo;
+        
         for(let x = startIndex; x <= endIndex; ++x) {
             const col = tiles.grid[x];
             if(col) {
@@ -25,7 +33,6 @@ export function createBackgroundLayer(level, sprites) {
         const drawTo = drawFrom + drawWidth;
         redraw(drawFrom, drawTo);
         
-        console.log(-camera.pos.x, -camera.pos.x % 16)
         
         context.drawImage(
             buffer,
