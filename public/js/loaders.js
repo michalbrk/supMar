@@ -62,8 +62,8 @@ export function loadSpriteSheet(name) {
             image,
             sheetSpec.tileW,
             sheetSpec.tileH);
-        
-        if(sheetSpec.tiles) {
+
+        if (sheetSpec.tiles) {
             sheetSpec.tiles.forEach(tileSpec => {
                 sprites.defineTile(
                     tileSpec.name,
@@ -71,14 +71,14 @@ export function loadSpriteSheet(name) {
                     tileSpec.index[1]);
             });
         }
-        
-        if(sheetSpec.frames) {
+
+        if (sheetSpec.frames) {
             sheetSpec.frames.forEach(frameSpec => {
                 sprites.define(frameSpec.name, ...frameSpec.rect);
             });
         }
 
-        if(sheetSpec.animations) {
+        if (sheetSpec.animations) {
             sheetSpec.animations.forEach(animSpec => {
                 const animation = createAnim(animSpec.frames, animSpec.frameLen);
                 sprites.defineAnim(animSpec.name, animation);

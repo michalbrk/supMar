@@ -24,6 +24,7 @@
             "name": "chance",
             "index": [24, 0]
         },
+
         {
             "name": "chance-1",
             "index": [24, 0]
@@ -37,14 +38,17 @@
             "index": [26, 0]
         }
     ],
+
     "animations": [
         {
             "name": "chance",
-            "frameLen": 1,
+            "frameLen": 0.12,
             "frames": [
                 "chance-1",
+                "chance-1",
                 "chance-2",
-                "chance-3"
+                "chance-3",
+                "chance-2"
             ]
         }
     ]
