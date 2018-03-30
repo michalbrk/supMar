@@ -17,6 +17,7 @@ Promise.all([
 
     mario.pos.set(64, 64);
 
+
     level.entities.add(mario);
 
     const input = setupKeyboard(mario);
@@ -25,8 +26,8 @@ Promise.all([
     const timer = new Timer(1/60);
     timer.update = function update(deltaTime) {
         level.update(deltaTime);
-        
-        if(mario.pos.x > 100) {
+
+        if (mario.pos.x > 100) {
             camera.pos.x = mario.pos.x - 100;
         }
 
